@@ -1,0 +1,22 @@
+{
+  "name": "20250122_bcfquery",
+  "type": "module",
+  "bin": {
+    "bcfai-chat": "./index.js"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@inquirer/prompts": "^7.2.3",
+    "@thatopen/components": "2.4.3",
+    "cohere-ai": "7.15.4",
+    "dotenv": "^16.4.7"
+  }
+}
