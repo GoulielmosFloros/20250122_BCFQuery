@@ -77,55 +77,95 @@ async function makeRequest(stringData) {
     message: 'Write your prompt:' // Message to be displayed
   }
 
+  //Create an object called questions
+  const questions = {
+    name: 'actionToTake',
+    type: 'list',
+    message: 'Select one:',
+    choices: ['Ask Something', 'Export last message to JSON', 'Export Chat', 'Exit']
+  }
+
   while (true) {
-	  // There are other options to use with prompt but this one works just fine.
-    const input = await prompt.input(userPrompt)
 
-    if (!input) {
-      console.log('No input given, try writing something.')
-      continue
-    }
+    const question = await prompt.select(questions)
     
-    // This prompt can be tuned, but it works good to 
-    // get the conversation with cohere going
-    // stringData is the information from the topics.
-    const coherePrompt = {
-      message: `Based on the following data ${stringData}
-      You should only create the response based on the information given.
-      The data contains this structure, that does not mean that you are going to give me this
-      {
-        title: string
-        description: string
-        type: string
-        priority: string
-        labels: Array
-        stage: string
-        assignee: string
-      }
-      Information that is not found on ${stringData} should not be presented on the
-      result
-      your job is to answer the following question: ${input}.
-      If the question is empty, say that you can't process empty questions and to try again.`
-    }
-    const response = await cohere.chat(coherePrompt)
-    
-    const responseText = response.text
-    
-    console.log(response.text)
-
-    // Push an object in this format to the messages array
-    messages.push(
-      {
-        user: input,
-        cohere: responseText
-      }
-    )
-
-    const fileName = 'CohereChat.json'
-    const stringifiedMessages = JSON.stringify(messages, null, 2)
-    fs.writeFileSync(fileName, stringifiedMessages)
+    if (question==="Ask Something") {
+      // There are other options to use with prompt but this one works just fine.
+      const input = await prompt.input(userPrompt)
   
-    console.log(`Chat exported to ${process.cwd()}\\\\${fileName}`)
+      if (!input) {
+        console.log('No input given, try writing something.')
+        continue
+      }
+      
+      // This prompt can be tuned, but it works good to 
+      // get the conversation with cohere going
+      // stringData is the information from the topics.
+      const coherePrompt = {
+        message: `Based on the following data ${stringData}
+        You should only create the response based on the information given.
+        The data contains this structure, that does not mean that you are going to give me this
+        {
+          title: string
+          description: string
+          type: string
+          priority: string
+          labels: Array
+          stage: string
+          assignee: string
+        }
+        Information that is not found on ${stringData} should not be presented on the
+        result
+        your job is to answer the following question: ${input}.
+        If the question is empty, say that you can't process empty questions and to try again.`
+      }
+      const response = await cohere.chat(coherePrompt)
+      
+      const responseText = response.text
+      
+      console.log(response.text)
+  
+      // Push an object in this format to the messages array
+      messages.push(
+        {
+          user: input,
+          cohere: responseText
+        }
+      )
+    } else if (question==="Export last message to JSON") {
+      if (!messages) {
+        console.log('No last message to export')
+        continue
+      }
+
+      const lastMessage = messages[messages.length - 1];
+
+      const stringifiedLastMessage = JSON.stringify(lastMessage, null, 2)
+
+      const coherePromptLastMessage = {
+        message: `Based on the following data ${stringifiedLastMessage}
+        You should only create a JSON structure from these data.`
+      }
+
+      const responseLastMessage = await cohere.chat(coherePromptLastMessage)
+
+      console.log(responseLastMessage.text)
+
+    } else if (question==='Export Chat') {
+      if (!messages) {
+        console.log('No chat to export')
+        continue
+      }
+
+      const fileName = 'CohereChat.json'
+      const stringifiedMessages = JSON.stringify(messages, null, 2)
+      fs.writeFileSync(fileName, stringifiedMessages)
+    
+      console.log(`Chat exported to ${process.cwd()}\\\\${fileName}`)
+
+    } else if (question==='Exit') {
+      break
+    }
   }
 }
 
