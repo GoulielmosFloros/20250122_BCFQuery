@@ -1,0 +1,10 @@
+[
+  {
+    "user": "What is this file for?",
+    "cohere": "Here is the response based on the provided data:\n\n**Title:** User Assignment Error\n**Description:** An error has occurred regarding a user assignment.\n**Type:** Error\n**Priority:** High (Based on the 'OPEN' status)\n**Labels:** None specified\n**Stage:** Open\n**Assignee:** Architect@example.com\n\nThis file seems to be a record of an error related to user assignments, with details about the error type, status, and the assigned user. It might be used for tracking and resolving issues within a system or application."
+  },
+  {
+    "user": "What is the topic that needs to be resolved the soonest",
+    "cohere": "Here is the response based on the provided data:\n\n**Title:** User Assignment Error\n**Description:** An error has occurred regarding user assignments.\n**Type:** Error\n**Priority:** High (Based on the 'OPEN' status and the lack of further details, it seems this issue requires immediate attention)\n**Labels:** None specified\n**Stage:** Open\n**Assignee:** Architect@example.com\n\nThe topic that needs to be resolved soonest is the 'User Assignment' error, as it is currently open and requires action from the assigned architect."
+  }
+]

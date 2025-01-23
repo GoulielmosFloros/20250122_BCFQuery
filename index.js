@@ -108,13 +108,15 @@ async function makeRequest(stringData) {
       If the question is empty, say that you can't process empty questions and to try again.`
     }
     const response = await cohere.chat(coherePrompt)
-  
+    
+    const responseText = response.text
+    
     console.log(response.text)
 
     // Push an object in this format to the messages array
     messages.push(
       {
-        user: question,
+        user: input,
         cohere: responseText
       }
     )
