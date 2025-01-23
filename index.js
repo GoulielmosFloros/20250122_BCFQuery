@@ -104,18 +104,7 @@ async function makeRequest(stringData) {
       const coherePrompt = {
         message: `Based on the following data ${stringData}
         You should only create the response based on the information given.
-        The data contains this structure, that does not mean that you are going to give me this
-        {
-          title: string
-          description: string
-          type: string
-          priority: string
-          labels: Array
-          stage: string
-          assignee: string
-        }
-        Information that is not found on ${stringData} should not be presented on the
-        result
+        Information that is not found on ${stringData} should not be presented on the result
         your job is to answer the following question: ${input}.
         If the question is empty, say that you can't process empty questions and to try again.`
       }
@@ -144,6 +133,11 @@ async function makeRequest(stringData) {
 
       const coherePromptLastMessage = {
         message: `Based on the following data ${stringifiedLastMessage}
+        The response should keep the structure
+        {
+          user
+          cohere
+        }
         You should only create a JSON structure from these data.`
       }
 

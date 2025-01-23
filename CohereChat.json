@@ -1,0 +1,6 @@
+[
+  {
+    "user": "What is the file describing?",
+    "cohere": "Answer: This file describes a user assignment with the title \"User assignment\", created by Architect@example.com on 17th February 2021. The file includes details about various handlers and their enabled status for different events such as item addition, deletion, and clearing. It also mentions the server-assigned ID, modified date, type, status, and the assigned user. The file indicates that the assignment is of type \"ERROR\" and has an \"OPEN\" status."
+  }
+]
