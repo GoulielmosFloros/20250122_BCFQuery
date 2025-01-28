@@ -169,7 +169,7 @@ async function chat() {
 
   for (const file of filesPath) {
     const fileData = readFile(file)
-    stringData = await loadTopics(fileData)
+    stringData += await loadTopics(fileData)
   }
 
   await makeRequest(stringData)

@@ -1,6 +1,14 @@
 [
   {
-    "user": "What is the file describing?",
-    "cohere": "Answer: This file describes a user assignment with the title \"User assignment\", created by Architect@example.com on 17th February 2021. The file includes details about various handlers and their enabled status for different events such as item addition, deletion, and clearing. It also mentions the server-assigned ID, modified date, type, status, and the assigned user. The file indicates that the assignment is of type \"ERROR\" and has an \"OPEN\" status."
+    "user": "What is this file describing",
+    "cohere": "This file describes an error event with the title \"Labels\". It was created on February 17, 2021, by Architect@example.com. The error is currently marked as \"Open\", and various event handlers are enabled for different actions, such as item addition, deletion, and clearing. The file also includes information about related topics, comments, and custom data, although no specific details are provided for these fields."
+  },
+  {
+    "user": "When was this file created?",
+    "cohere": "The file was created on February 17, 2021."
+  },
+  {
+    "user": "What is the issue of this file?",
+    "cohere": "The issue with this file is that it is an error type with an \"Open\" status, indicating that there is an unresolved problem or error. The file was created by Architect@example.com on February 17, 2021, and has not been modified since. The error is related to \"Labels\", as indicated by the title, but the specific details of the error are not provided in the data."
   }
 ]
